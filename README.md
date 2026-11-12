@@ -1,4 +1,4 @@
-# MC BlueBridge for Batocera
+# MC BlueBridge Daemon for Batocera 
 
 Pair controllers, adjust their profiles, and update your MC BlueBridge adapter from a browser while the adapter stays plugged into Batocera.
 
