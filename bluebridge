@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+case "${1:-}" in
+    start|stop|restart|status)
+        exec python3 /userdata/system/bluebridge/bluebridge_daemon.py --control "$1"
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}" >&2
+        exit 1
+        ;;
+esac
