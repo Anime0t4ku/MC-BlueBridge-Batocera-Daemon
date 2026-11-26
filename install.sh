@@ -21,12 +21,13 @@ sh -n "$source_dir/bluebridge"
 mkdir -p "$app_dir" "$service_dir" "$data_dir"
 staging=$(mktemp -d "$app_dir/install.XXXXXX")
 trap 'rm -rf "$staging"' EXIT
-cp "$source_dir/bluebridge_daemon.py" "$source_dir/bluebridge" "$staging/"
+cp "$source_dir/bluebridge_daemon.py" "$source_dir/bluebridge_updater.py" "$source_dir/bluebridge" "$staging/"
 chmod +x "$staging/bluebridge"
 
 if [ -f "$service" ]; then
     sh "$service" stop
 fi
+mv -f "$staging/bluebridge_updater.py" "$app_dir/bluebridge_updater.py"
 mv -f "$staging/bluebridge_daemon.py" "$app_dir/bluebridge_daemon.py"
 mv -f "$staging/bluebridge" "$service"
 batocera-services enable bluebridge
